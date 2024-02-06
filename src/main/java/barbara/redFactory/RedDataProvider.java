@@ -1,11 +1,11 @@
-package barbara.blueFactory;
+package barbara.redFactory;
 
 import barbara.abstractFactory.AbstractDataHolder;
 import barbara.abstractFactory.AbstractDataProvider;
 
-public class BlueDataProvider extends AbstractDataProvider {
+public class RedDataProvider extends AbstractDataProvider {
     @Override
     public void applyDataToDataHolder(AbstractDataHolder holder) {
-        BlueDataHolder concreteDataHolder = (BlueDataHolder) holder;
+        RedDataHolder concreteDataHolder = (RedDataHolder) holder;
     }
 }
