@@ -57,4 +57,6 @@ class BlueDataProvider extends AbstractDataProvider {
 
 ## Solutions
 
-* Try downcasting at runtime from `AbstractDataHolder` to `BlueDataHolder`.
+So far, the only solution I come up with is down-casting the abstract `dataHolder` parameter to its concrete type at runtime (see `barbara.blueFactory.BlueDataProvider.applyDataToDataHolder` as an example) which feels like an architectural smell.
+
+Any better solutions?
