@@ -5,16 +5,30 @@ import barbara.abstractFactory.AbstractDataProvider;
 import barbara.abstractFactory.AbstractDataSerializer;
 import barbara.abstractFactory.AbstractFactory;
 import barbara.blueFactory.BlueFactory;
+import barbara.redFactory.RedFactory;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 public class FactoryEmployer {
-
     public static void main(String[] args) {
-        AbstractFactory factory = new BlueFactory();
+        FactoryEmployer factoryEmployer = new FactoryEmployer();
+        List<AbstractFactory> factories = Arrays.asList(new BlueFactory(), new RedFactory());
+        for (AbstractFactory factory : factories) {
+            System.out.printf(
+                    "%-35s -> %s%n",
+                    factory.getClass().getCanonicalName(),
+                    factoryEmployer.prepareDataAndSerialize(factory)
+            );
+        }
+    }
+
+    private String prepareDataAndSerialize(AbstractFactory factory) {
         AbstractDataProvider dataProvider = factory.createDataProvider();
         AbstractDataHolder dataHolder = factory.createDataHolder();
         AbstractDataSerializer serializer = factory.createDataSerializer();
 
-        dataProvider.applyDataToDataHolder(dataHolder);
-        System.out.println(serializer.serialize(dataHolder));
+        return serializer.serialize(dataHolder);
     }
 }

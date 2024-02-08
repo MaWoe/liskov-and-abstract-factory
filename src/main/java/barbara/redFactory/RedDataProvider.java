@@ -7,5 +7,7 @@ public class RedDataProvider extends AbstractDataProvider {
     @Override
     public void applyDataToDataHolder(AbstractDataHolder holder) {
         RedDataHolder concreteDataHolder = (RedDataHolder) holder;
+        concreteDataHolder.favoriteDish = "Pizza";
+        concreteDataHolder.size = 32;
     }
 }

@@ -6,6 +6,7 @@ import barbara.abstractFactory.AbstractDataSerializer;
 public class RedDataSerializer extends AbstractDataSerializer {
     @Override
     public String serialize(AbstractDataHolder holder) {
-        return "abstract";
+        RedDataHolder concreteDataHolder = (RedDataHolder) holder;
+        return String.format("Favorite dish: %s / size: %d", concreteDataHolder.favoriteDish, concreteDataHolder.size);
     }
 }
