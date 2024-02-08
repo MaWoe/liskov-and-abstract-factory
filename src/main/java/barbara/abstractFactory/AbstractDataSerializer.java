@@ -1,5 +1,7 @@
 package barbara.abstractFactory;
 
-public abstract class AbstractDataSerializer {
-    public abstract String serialize(AbstractDataHolder holder);
+public abstract class AbstractDataSerializer<T extends DataHolder> {
+
+    public abstract String serialize(T holder);
+
 }

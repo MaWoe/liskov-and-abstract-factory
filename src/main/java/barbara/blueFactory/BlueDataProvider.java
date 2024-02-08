@@ -1,13 +1,13 @@
 package barbara.blueFactory;
 
-import barbara.abstractFactory.AbstractDataHolder;
 import barbara.abstractFactory.AbstractDataProvider;
 
-public class BlueDataProvider extends AbstractDataProvider {
+public class BlueDataProvider extends AbstractDataProvider<BlueDataHolder> {
+
     @Override
-    public void applyDataToDataHolder(AbstractDataHolder holder) {
-        BlueDataHolder concreteDataHolder = (BlueDataHolder) holder;
-        concreteDataHolder.blueName = "Lord of the Blue";
-        concreteDataHolder.blueAge = 42;
+    public void applyDataToDataHolder(BlueDataHolder holder) {
+        holder.blueName = "Lord of the Blue";
+        holder.blueAge = 42;
     }
+
 }

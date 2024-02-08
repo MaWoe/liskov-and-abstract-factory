@@ -1,13 +1,13 @@
 package barbara.blueFactory;
 
-import barbara.abstractFactory.AbstractDataHolder;
+import barbara.abstractFactory.DataHolder;
 import barbara.abstractFactory.AbstractDataSerializer;
 
-public class BlueDataSerializer extends AbstractDataSerializer {
-    @Override
-    public String serialize(AbstractDataHolder holder) {
-        BlueDataHolder concreteDataHolder = (BlueDataHolder) holder;
+public class BlueDataSerializer extends AbstractDataSerializer<BlueDataHolder> {
 
-        return String.format("name: %s / age: %d", concreteDataHolder.blueName, concreteDataHolder.blueAge);
+    @Override
+    public String serialize(BlueDataHolder holder) {
+        return "name: %s / age: %d".formatted(holder.blueName, holder.blueAge);
     }
+
 }

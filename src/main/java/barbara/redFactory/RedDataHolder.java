@@ -1,8 +1,8 @@
 package barbara.redFactory;
 
-import barbara.abstractFactory.AbstractDataHolder;
+import barbara.abstractFactory.DataHolder;
 
-public class RedDataHolder extends AbstractDataHolder {
+public class RedDataHolder implements DataHolder {
     public String favoriteDish;
     public int size;
 }
