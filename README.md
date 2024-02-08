@@ -6,10 +6,8 @@ This project elaborates on how to implement an abstract factory in the face of t
 
 We have an abstract factory that creates three types of instances:
 * A data holder that is meant to - well - hold data by means of providing public properties
-* A data provider whose responsibility is to apply data to the data holder from above
-  * It has an "apply data to data holder" method that applies the data to a data holder instance that has been created by the factory
-* A data serializer who serializes the data hold by the data holder into a string
-  * It has a "serialize" method that expects an instance of above create data holder and returns a string representing the state of the data holder
+* A data provider with a `applyDataToDataHolder` method applying data to a data holder instance created by the factory
+* A data serializer with a `serialize` method serializing the data hold by the data holder into a string
 
 ## The problem
 
