@@ -1,9 +1,11 @@
 package barbara.abstractFactory;
 
-abstract public class AbstractFactory {
-    abstract public AbstractDataProvider createDataProvider();
+public abstract class AbstractFactory<T extends DataHolder> {
 
-    abstract public AbstractDataHolder createDataHolder();
+    public abstract AbstractDataProvider<T> createDataProvider();
 
-    abstract public AbstractDataSerializer createDataSerializer();
+    public abstract T createDataHolder();
+
+    public abstract AbstractDataSerializer<T> createDataSerializer();
+
 }

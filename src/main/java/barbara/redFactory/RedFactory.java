@@ -1,23 +1,25 @@
 package barbara.redFactory;
 
-import barbara.abstractFactory.AbstractDataHolder;
+import barbara.abstractFactory.DataHolder;
 import barbara.abstractFactory.AbstractDataProvider;
 import barbara.abstractFactory.AbstractDataSerializer;
 import barbara.abstractFactory.AbstractFactory;
 
-public class RedFactory extends AbstractFactory {
+public class RedFactory extends AbstractFactory<RedDataHolder> {
+
     @Override
-    public AbstractDataProvider createDataProvider() {
+    public AbstractDataProvider<RedDataHolder> createDataProvider() {
         return new RedDataProvider();
     }
 
     @Override
-    public AbstractDataHolder createDataHolder() {
+    public RedDataHolder createDataHolder() {
         return new RedDataHolder();
     }
 
     @Override
-    public AbstractDataSerializer createDataSerializer() {
+    public AbstractDataSerializer<RedDataHolder> createDataSerializer() {
         return new RedDataSerializer();
     }
+
 }

@@ -1,12 +1,10 @@
 package barbara.redFactory;
 
-import barbara.abstractFactory.AbstractDataHolder;
 import barbara.abstractFactory.AbstractDataSerializer;
 
-public class RedDataSerializer extends AbstractDataSerializer {
+public class RedDataSerializer extends AbstractDataSerializer<RedDataHolder> {
     @Override
-    public String serialize(AbstractDataHolder holder) {
-        RedDataHolder concreteDataHolder = (RedDataHolder) holder;
-        return String.format("Favorite dish: %s / size: %d", concreteDataHolder.favoriteDish, concreteDataHolder.size);
+    public String serialize(RedDataHolder holder) {
+        return "Favorite dish: %s / size: %d".formatted(holder.favoriteDish, holder.size);
     }
 }
