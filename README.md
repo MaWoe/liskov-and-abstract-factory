@@ -15,7 +15,9 @@ According to https://en.wikipedia.org/wiki/Abstract_factory_pattern ...
 
 > ... the abstract factory pattern [...] provides a way to create families of related objects without imposing their concrete classes, by encapsulating a group of individual factories that have a common theme without specifying their concrete classes.
 
-In the case of the setup outlined above our family consists of the data provider, the data holder and the data serializer. The family members share a "common theme". Now about concrete implementations of that abstract factory:
+In the case of the setup outlined above our family consists of the data provider, the data holder and the data serializer. The family members share a "common theme" namely the public properties of the data holder that need to be populated by the data provider and serialized by the serializer afterward.
+
+Now about concrete implementations of that abstract factory:
 
 A concrete factory - let's call it `BlueFactory` - creates a `BlueDataHolder`, `BlueDataProvider` and a `BlueDataSerializer`. The `BlueDataProvider` contains a set of public properties:
 
@@ -23,11 +25,11 @@ A concrete factory - let's call it `BlueFactory` - creates a `BlueDataHolder`, `
 class BlueDataHolder extends AbstractDataHolder {
     public String blueName;
     
-    public int blueNumber;
+    public int blueAge;
 }
 ```
 
-The properties of `BlueDataHolder` are meant to be populated by `BlueDataProvider.applyDataToDataHolder()`. Since the public properties declared in `BlueDataHolder` are specific to the "blue" family it would be consequent to implement the apply method with the following parameter signature:
+The properties of `BlueDataHolder` are meant to be populated by `BlueDataProvider.applyDataToDataHolder()`. Since the public properties declared in `BlueDataHolder` are specific to the "blue" family it would be consequent to only accept `BlueDataHolder` as parameter:
 
 ```java
 class BlueDataProvider extends AbstractDataProvider {
@@ -36,7 +38,7 @@ class BlueDataProvider extends AbstractDataProvider {
 }
 ```
 
-Remember: According to above definition of the abstract factory pattern the concrete classes have a common "theme" or let's simply say: They are family. The data provider knows exactly which public properties exist on the data holder and how to set them up.
+Remember: According to above definition of the abstract factory pattern the concrete classes have a common "theme" or let's simply say: They are family. The data provider knows exactly which public properties exist on the data holder and how to set them up (the same is true for the serializer which has to read those properties from the data holder).
 
 ### The conflict
 
@@ -51,10 +53,10 @@ class BlueDataProvider extends AbstractDataProvider {
 }
 ```
 
-... which means we have to accept an unnecessarily vague supertype of `BlueDataHolder` as parameter.
+... which means we have to accept the unnecessarily vague `AbstractDataHolder` supertype as parameter.
 
 ## Solutions
 
-So far, the only solution I come up with is down-casting the abstract `dataHolder` parameter to its concrete type at runtime (see `barbara.blueFactory.BlueDataProvider.applyDataToDataHolder` as an example) which feels like an architectural smell.
+So far, the only solution I can come up with is down-casting the abstract `dataHolder` parameter to its concrete type at runtime (see `barbara.blueFactory.BlueDataProvider.applyDataToDataHolder` as an example) which feels like an architectural smell.
 
 Any better solutions?

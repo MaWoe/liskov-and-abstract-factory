@@ -8,6 +8,6 @@ public class BlueDataSerializer extends AbstractDataSerializer {
     public String serialize(AbstractDataHolder holder) {
         BlueDataHolder concreteDataHolder = (BlueDataHolder) holder;
 
-        return String.format("name: %s / age: %d", concreteDataHolder.name, concreteDataHolder.age);
+        return String.format("name: %s / age: %d", concreteDataHolder.blueName, concreteDataHolder.blueAge);
     }
 }

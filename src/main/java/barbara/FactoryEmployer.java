@@ -24,8 +24,9 @@ public class FactoryEmployer {
     }
 
     private String prepareDataAndSerialize(AbstractFactory factory) {
-        AbstractDataProvider dataProvider = factory.createDataProvider();
         AbstractDataHolder dataHolder = factory.createDataHolder();
+        AbstractDataProvider dataProvider = factory.createDataProvider();
+        dataProvider.applyDataToDataHolder(dataHolder);
         AbstractDataSerializer serializer = factory.createDataSerializer();
 
         return serializer.serialize(dataHolder);
