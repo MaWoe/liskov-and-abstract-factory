@@ -77,7 +77,9 @@ private String prepareDataAndSerialize(AbstractFactory factory) {
 As long as the products of a concrete factory are processed in the boundaries of such a function it's all good. But what if another developer didn't get the concept and writes something like this?:
 
 ```java
-private String prepareDataAndSerializeForTwoFactoriesAtOnce(AbstractFactory factory1, AbstractFactory factory2) {
+private String prepareDataAndSerializeForTwoFactoriesAtOnce(
+        AbstractFactory factory1,
+        AbstractFactory factory2) {
     AbstractDataHolder dataHolder1 = factory1.createDataHolder();
     AbstractDataProvider dataProvider1 = factory1.createDataProvider();
     AbstractDataSerializer serializer1 = factory1.createDataSerializer();
@@ -105,7 +107,7 @@ to class barbara.blueFactory.BlueDataHolder
 
 While I have been stuck in the PHP world for decades I never came to explain this problem to someone who works with a programming language that supports generics. I was also lazy and never outlined the problem in real code but talked about it only.
 
-Finally, a few weeks ago I sat down and wrote down the problem in detail in the form of this little project. I showed it to my friend Y.S. who happens to be a skilled Java developer. And voilà: After almost a decade of wondering he gave me the right hints (thank you a lot for that :pray: :pray: :pray:). You can see his initial pull request [here](https://github.com/MaWoe/liskov-and-abstract-factory/pull/1).
+Finally, a few weeks ago I sat down and wrote down the problem in detail in the form of this little project. I showed it to my friend Yilmaz who happens to be a skilled Java developer. And voilà: After almost a decade of wondering he gave me the right hints (thank you a lot for that :pray: :pray: :pray:). You can see his initial pull request [here](https://github.com/MaWoe/liskov-and-abstract-factory/pull/1).
 
 While the down-casting approach is located in package `barbara` the generic solution can be found in package `barbaraGeneric`.
 
