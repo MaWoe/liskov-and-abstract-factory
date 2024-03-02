@@ -21,6 +21,8 @@ public class FactoryEmployer {
                     factoryEmployer.prepareDataAndSerialize(factory)
             );
         }
+
+        factoryEmployer.prepareDataAndSerializeForTwoFactoriesAtOnce(new BlueFactory(), new RedFactory());
     }
 
     private String prepareDataAndSerialize(AbstractFactory factory) {
@@ -30,5 +32,19 @@ public class FactoryEmployer {
         AbstractDataSerializer serializer = factory.createDataSerializer();
 
         return serializer.serialize(dataHolder);
+    }
+
+    private String prepareDataAndSerializeForTwoFactoriesAtOnce(AbstractFactory factory1, AbstractFactory factory2) {
+        AbstractDataHolder dataHolder1 = factory1.createDataHolder();
+        AbstractDataProvider dataProvider1 = factory1.createDataProvider();
+        AbstractDataSerializer serializer1 = factory1.createDataSerializer();
+        dataProvider1.applyDataToDataHolder(dataHolder1);
+
+        AbstractDataHolder dataHolder2 = factory2.createDataHolder();
+        AbstractDataProvider dataProvider2 = factory2.createDataProvider();
+        AbstractDataSerializer serializer2 = factory2.createDataSerializer();
+        dataProvider2.applyDataToDataHolder(dataHolder2);
+
+        return serializer1.serialize(dataHolder2) + serializer2.serialize(dataHolder1);
     }
 }
